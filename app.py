@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash
 from database import connect_db_rnis_to, connect_db_avtovokzal
 from user_operations import check_user, copy_user, check_new_user
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 
 
 
@@ -35,5 +35,5 @@ def copy_user_route():
     else:
         return 'Такого пользователя не существует или такая копия уже есть'
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=2283)
